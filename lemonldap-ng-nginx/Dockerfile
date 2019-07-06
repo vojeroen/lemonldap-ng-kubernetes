@@ -1,4 +1,4 @@
-FROM vojeroen/test:lemonldap-ng-base
+FROM vojeroen/lemonldap-ng-base:latest
 
 RUN set -x && \
     apt-get update && \
