@@ -55,6 +55,11 @@ spec:
           volumeMounts:
             - name: usr-local
               mountPath: /usr/local/
+        - name: cron
+          image: vojeroen/lemonldap-ng-cron:latest
+          volumeMounts:
+            - name: lemonldap-files
+              mountPath: /usr/local
       volumes:
         - name: usr-local
           emptyDir: {}
