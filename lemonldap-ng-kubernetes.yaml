@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lemonldap
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      name: http
+  selector:
+    app: lemonldap
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lemonldap
+spec:
+  selector:
+    matchLabels:
+      app: lemonldap
+  template:
+    metadata:
+      labels:
+        app: lemonldap
+    spec:
+      initContainers:
+        - name: init
+          image: vojeroen/lemonldap-ng-init:latest
+          env:
+            - name: DOMAIN
+              value: example.com
+            - name: LDAP_CONF_SERVER
+              value: ldap
+            - name: LDAP_CONF_BASE
+              value: ou=conf,ou=applications,dc=example,dc=com
+            - name: LDAP_CONF_BIND_DN
+              value: cn=admin,dc=example,dc=com
+            - name: LDAP_CONF_BIND_PW
+              value: <set password>
+          volumeMounts:
+            - name: usr-local
+              mountPath: /usr/local/
+      containers:
+        - name: fastcgi
+          image: vojeroen/lemonldap-ng-fastcgi:latest
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: usr-local
+              mountPath: /usr/local/
+        - name: nginx
+          image: vojeroen/lemonldap-ng-nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: usr-local
+              mountPath: /usr/local/
+      volumes:
+        - name: usr-local
+          emptyDir: {}
