@@ -2,7 +2,7 @@
 
 This repository contains several Docker images and a Kubernetes config file to deploy [LemonLDAP::NG](https://lemonldap-ng.org) to a Kubernetes cluster.
 
-The configuration is stored using the [LDAP configuration backend](https://lemonldap-ng.org/documentation/latest/ldapconfbackend).
+The configuration is stored using the [LDAP configuration backend](https://lemonldap-ng.org/documentation/latest/ldapconfbackend) in order to keep the LemonLDAP::NG containers completely stateless.
 
 ## Requirements
 * Kubernetes cluster
@@ -13,6 +13,7 @@ The Docker images are available on Docker Hub:
 * https://hub.docker.com/r/vojeroen/lemonldap-ng-init
 * https://hub.docker.com/r/vojeroen/lemonldap-ng-fastcgi
 * https://hub.docker.com/r/vojeroen/lemonldap-ng-nginx
+* https://hub.docker.com/r/vojeroen/lemonldap-ng-cron
 
 ## Deployment
 Take a copy of `lemonldap-ng-kubernetes.yaml` and modify it to suit your needs. Then upload the configuration to Kubernetes.
