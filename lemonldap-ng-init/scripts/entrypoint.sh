@@ -23,4 +23,4 @@ cp /app/lemonldap-ng.ini /usr/local/lemonldap-ng/etc/lemonldap-ng.ini
 
 # load the default config into the LDAP database if it doesn't exist yet
 python3 /app/json_to_ldap.py
-ldapadd -x -D "${LDAP_CONF_BIND_DN}" -w "${LDAP_CONF_BIND_PW}" -H ldap://ldap -f /app/lmConf-1.ldif || true
+ldapadd -x -D "${LDAP_CONF_BIND_DN}" -w "${LDAP_CONF_BIND_PW}" -H ldap://${LDAP_CONF_SERVER} -f /app/lmConf-1.ldif || true
