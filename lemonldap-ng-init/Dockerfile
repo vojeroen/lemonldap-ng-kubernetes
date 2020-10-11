@@ -8,7 +8,7 @@ RUN set -x && \
 
 RUN set -x && \
     apt-get update && \
-    apt-get install -y python3 ldap-utils && \
+    apt-get install -y python3 ldap-utils sphinx-common python-sphinx-bootstrap-theme uglifyjs && \
     apt-get clean
     
 COPY config/lemonldap-ng.ini /app/lemonldap-ng.ini
