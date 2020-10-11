@@ -1,6 +1,6 @@
 FROM debian:stretch-slim
 
-ENV LEMONLDAP_VERSION=2.0.5
+ENV LEMONLDAP_VERSION=2.0.9
 
 RUN set -x && \
     apt-get update && \
