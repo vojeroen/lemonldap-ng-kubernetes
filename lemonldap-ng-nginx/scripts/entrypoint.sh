@@ -11,6 +11,6 @@ cd /etc/nginx/sites-enabled/ && \
     ln -s /usr/local/lemonldap-ng/etc/manager-nginx.conf && \
     ln -s /usr/local/lemonldap-ng/etc/test-nginx.conf
 
-sed -i -e "s|fastcgi_pass unix:/usr/local/run/llng-fastcgi.sock|fastcgi_pass ${FASTCGI_PASS}|" /usr/local/lemonldap-ng/etc/*-nginx.conf
+sed -i -e "s|unix:/usr/local/run/llng-fastcgi.sock|${FASTCGI_PASS}|" /usr/local/lemonldap-ng/etc/*-nginx.conf
 
 nginx -g "daemon off;"
