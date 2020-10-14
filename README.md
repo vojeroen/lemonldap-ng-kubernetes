@@ -1,3 +1,5 @@
+**Warning: this repo is not maintained. Feel free to use it as a base to work from, but you will have to take care of any upgrades.**
+
 # LemonLDAP::NG for Kubernetes
 
 This repository contains several Docker images and a Kubernetes config file to deploy [LemonLDAP::NG](https://lemonldap-ng.org) to a Kubernetes cluster.
